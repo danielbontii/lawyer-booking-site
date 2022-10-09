@@ -7,9 +7,11 @@ const app = express();
 const notFoundMiddleware = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 const morgan = require("morgan");
+const cors = require("cors");
 
 app.use(express.json());
 app.use(morgan("dev"));
+app.use("cors");
 
 //all routes will go before the notfound middleware
 
