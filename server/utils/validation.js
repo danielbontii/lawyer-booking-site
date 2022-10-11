@@ -11,7 +11,13 @@ const validateRegistration = Joi.object({
       "string.pattern.base": "Please match the given password format",
     }),
   confirmPassword: Joi.ref("password"),
-  userType: Joi.number().required(),
+  userType: Joi.string().required(),
+  dob: Joi.date().required(),
+  firstName: Joi.string().required(),
+  lastName: Joi.string().required(),
+  middleName: Joi.string().allow(""),
+  summary: Joi.string().max(255).allow(""),
+  phoneNumber: Joi.string().required(),
 }).with("password", "confirmPassword");
 
 module.exports = {
