@@ -15,6 +15,21 @@
   margin-inline: auto;
 }
 
+.close-btn, .logout-btn {
+  color: #1D2951;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+}
+.close-btn:hover, .logout-btn:hover {
+  transform: scale(0.9);
+}
+
+.view-profile-photo {
+  border-radius: 50%;
+  width: 4rem;
+  aspect-ratio: 1;
+}
+
 .contact {
   height: 2rem;
   background-color: #1D2951;
@@ -46,7 +61,7 @@ header {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 90vh;
+  height: 100vh;
   width: 100%;
   background-color: rgba(29, 41, 81, 0.5);
   z-index: -1;
@@ -82,6 +97,90 @@ h1 {
   background-color: #1D2951;
   padding: 1rem;
   border-top: 0.5rem solid #795C34;
+}
+
+@media screen and (max-width: 768px) {
+  .home {
+    height: max-content;
+  }
+  .hero {
+    margin-top: 20vh;
+  }
+  h1 {
+    width: 80%;
+  }
+  .hero-text {
+    width: 60%;
+  }
+  .services {
+    display: block !important;
+    margin-inline: 5% !important;
+  }
+  .service {
+    margin-bottom: 1rem;
+  }
+}
+.dashboard-page {
+  position: relative;
+  z-index: 2;
+  height: max-content;
+  background: linear-gradient(to bottom, rgba(29, 41, 81, 0.5), rgba(29, 41, 81, 0.1));
+}
+
+.client-dashboard h2 {
+  color: #1D2951;
+}
+.client-dashboard .card-subtitle {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+.photo {
+  width: 9rem;
+  aspect-ratio: 1;
+  overflow-y: hidden;
+}
+
+.lawyer-card {
+  position: relative;
+  z-index: -1;
+}
+
+.card-overlay {
+  width: 40%;
+  height: 70vh;
+  overflow-x: hidden;
+  min-width: 20rem;
+  position: absolute;
+  z-index: 10;
+  background-color: #ffffff;
+  color: gray;
+  left: 25%;
+  top: 20vh;
+  box-shadow: 3px 3px 15px -4px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 3px 3px 15px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 3px 15px -4px rgba(0, 0, 0, 0.75);
+}
+
+.show-profile-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 200vh;
+  width: 100%;
+  background-color: rgba(29, 41, 81, 0.5);
+  z-index: 5;
+}
+
+.reviewer-photo {
+  width: 3rem;
+  border-radius: 50%;
+}
+
+.scrollbar {
+  position: relative;
+  z-index: 15;
+  overflow-x: hidden !important;
 }
 
 body {
