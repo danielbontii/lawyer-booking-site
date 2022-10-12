@@ -14,6 +14,7 @@ import ClientLogin from "./pages/ClientLogin";
 import LawyerLogin from "./pages/LawyerLogin";
 import AdminLogin from "./pages/AdminLogin";
 import About from "./pages/About";
+import ClientDashboard from "./pages/ClientDashboard";
 import { AnimatePresence } from "framer-motion";
 
 function App() {
@@ -21,8 +22,8 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <AnimatePresence >
-          <Routes >
+        <AnimatePresence>
+          <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/register-lawyer" element={<LawyerRegistration />} />
             <Route path="/register-client" element={<ClientRegistration />} />
@@ -30,6 +31,7 @@ function App() {
             <Route path="/login-lawyer" element={<LawyerLogin />} />
             <Route path="/login-admin" element={<AdminLogin />} />
             <Route path="/about" element={<About />} />
+            <Route path="/client-dashboard" element={<ClientDashboard />} />
           </Routes>
         </AnimatePresence>
       </Router>

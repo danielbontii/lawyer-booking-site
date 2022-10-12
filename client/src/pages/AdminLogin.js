@@ -12,7 +12,7 @@ const AdminLogin = () => {
       exit={{ X: window.innerWidth, transition: { duration: 1 } }}
     >
       <Header />
-      <LoginForm navigatePage={"/admin-dashboard"} postRoute="" />
+      <LoginForm navigatePage={"admin-dashboard"} postRoute="" />
     </motion.div>
   );
 };

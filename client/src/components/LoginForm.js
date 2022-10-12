@@ -71,12 +71,12 @@ const LoginForm = ({navigatePage, postRoute}) => {
                   onChange={(e) => handleChange(e)}
                   value={password}
                 />
-                <label for="password">Enter Password</label>
+                <label for="password">Password</label>
               </div>
             </Col>
           </Row>
           <button className="btn btn-primary" onClick={(e) => handleSubmit(e)}>
-            REGISTER
+            LOGIN
           </button>
         </Form>
       </Container>

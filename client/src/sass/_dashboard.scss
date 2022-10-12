@@ -1,0 +1,71 @@
+@use "./variables" as *;
+
+.dashboard-page {
+  position: relative;
+  z-index: 2;
+  height: max-content;
+  background: linear-gradient(
+    to bottom,
+    rgb(29, 41, 81, 0.5),
+    rgb(29, 41, 81, 0.1)
+  );
+}
+
+.client-dashboard {
+  h2 {
+    color: $primary-color;
+  }
+
+  .card-subtitle {
+    font-size: 0.95rem;
+    opacity: 0.8;
+  }
+}
+
+.photo {
+  width: 9rem;
+  aspect-ratio: 1;
+  overflow-y: hidden;
+}
+
+.lawyer-card {
+  position: relative;
+  z-index: -1;
+}
+
+.card-overlay{
+  width: 40%;
+  height: 70vh;
+  overflow-x: hidden;
+  min-width: 20rem;
+  position: absolute;
+  z-index: 10;
+  background-color: #ffffff;
+  color: gray;
+  left: 25%;
+  top: 20vh;
+  box-shadow: 3px 3px 15px -4px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 3px 3px 15px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 3px 15px -4px rgba(0, 0, 0, 0.75);
+}
+
+.show-profile-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 200vh;
+  width: 100%;
+  background-color: rgb(29, 41, 81, 0.5);
+  z-index: 5;
+}
+
+.reviewer-photo {
+  width: 3rem;
+  border-radius: 50%;
+}
+
+.scrollbar {
+  position: relative;
+  z-index: 15;
+  overflow-x: hidden !important;
+}

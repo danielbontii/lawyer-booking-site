@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../components/Header";
 import RegistrationForm from "../components/RegistrationForm";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
 
 const LawyerRegistration = () => {
   return (
