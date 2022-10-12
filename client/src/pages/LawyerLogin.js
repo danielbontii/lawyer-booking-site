@@ -12,7 +12,7 @@ const LawyerLogin = () => {
       exit={{ X: window.innerWidth, transition: { duration: 1 } }}
     >
       <Header />
-      <LoginForm navigatePage={"client-dashboard"} postRoute="" />
+      <LoginForm navigatePage={"lawyer-dashboard"} postRoute="/api/v1/test" />
     </motion.div>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Navbar, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import {
   FaPhoneAlt,
@@ -12,22 +12,22 @@ import {
 
 const Header = () => {
   return (
-    <header>
+    <header className="sticky-top">
       <div className="contact">
         <Container>
           <Row className="d-flex align-content-center">
-            <Col>
+            <Col className="col-lg-2 col-sm-3">
               <p>
-                <FaPhoneAlt /> <nbsp />
+                <FaPhoneAlt className="pe-2 fs-2" />
                 +233 553 936 239
               </p>
             </Col>
-            <Col className="col-3">
-              <FaEnvelope /> <nbsp />
+            <Col className="col-lg-3 col-sm-6">
+              <FaEnvelope className="pe-2 fs-2" />
               pearsonspecterlit@gmail.com
             </Col>
-            <Col className="col-3"></Col>
-            <Col className="col-3">
+            <Col className="col-lg-3 col-sm-1"></Col>
+            <Col className="col-lg-3 d-sm-none d-lg-inline">
               <Row>
                 <Col></Col>
                 <Col>
@@ -45,7 +45,7 @@ const Header = () => {
                 <Col></Col>
               </Row>
             </Col>
-            <Col className="col-1">
+            <Col className="col-lg-1 col-sm-2">
               <Link to="/login-admin">
                 <button className="btn btn-light btn-sm">ADMIN</button>
               </Link>
@@ -53,11 +53,11 @@ const Header = () => {
           </Row>
         </Container>
       </div>
-      <Navbar className="navbar navbar-expand-lg navbar-light bg-light">
-        <Container className="container-fluid">
-          <Link href="#" className="navbar-brand">
+      <Navbar bg="light" expand="lg">
+        <Container>
+          <Navbar.Brand href="/" className="navbar-brand">
             Logo
-          </Link>
+          </Navbar.Brand>
           <button
             className="navbar-toggler"
             data-bs-toggle="collapse"
@@ -65,10 +65,11 @@ const Header = () => {
             aria-controls="nav"
             aria-expanded="false"
             aria-label="Toggle Navigation"
+            type="button"
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="nav">
+          <Nav className="collapse navbar-collapse" id="nav">
             <div className="navbar-nav ms-auto">
               <Link className="nav-link" to="/">
                 HOME
@@ -89,7 +90,7 @@ const Header = () => {
                 SIGN IN AS CLIENT
               </Link>
             </div>
-          </div>
+          </Nav>
         </Container>
       </Navbar>
     </header>

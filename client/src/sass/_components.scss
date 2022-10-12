@@ -16,3 +16,19 @@
   width: 60%;
   margin-inline: auto;
 }
+
+.close-btn, .logout-btn {
+  color: $primary-color;
+  cursor: pointer;
+  transition: all .25s ease-in-out;
+
+  &:hover {
+    transform: scale(0.9);
+  }
+}
+
+.view-profile-photo {
+  border-radius: 50%;
+  width: 4rem;
+  aspect-ratio: 1;
+}
