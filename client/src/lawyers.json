@@ -1,0 +1,110 @@
+{
+  "response": {
+    "data": [
+      {
+        "id": "1",
+        "firstName": "Theophilus",
+        "lastName": "Adu-Boateng",
+        "otherNames": "",
+        "email": "theophilusboateng@gmail.com",
+        "phone": "+233 255 256 235",
+        "photo": "https://randomuser.me/api/portraits/men/1.jpg",
+        "rating": 5,
+        "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+        "reviews": [
+          {
+            "reviewerName": "Jennifer Fynn",
+            "reviewerPhoto": "",
+            "rating": 4,
+            "reviewText": "Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer."
+          },
+          {
+            "reviewerName": "Albert Essilfie",
+            "reviewerPhoto": "",
+            "rating": 2,
+            "reviewText": "Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer."
+          },
+          {
+            "reviewerName": "Jonathan Kwamina Gordon",
+            "reviewerPhoto": "",
+            "rating": 5,
+            "reviewText": "Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer."
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "firstName": "Eunice",
+        "lastName": "Amissah",
+        "otherNames": "Ewurama",
+        "email": "euniceewurama@gmail.com",
+        "phone": "+233 220 202 123",
+        "photo": "https://randomuser.me/api/portraits/women/3.jpg",
+        "rating": 4,
+        "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+        "reviews": [
+          {
+            "reviewerName": "Thomas Amenlemah",
+            "reviewerPhoto": "",
+            "rating": 4,
+            "reviewText": "Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer."
+          },
+          {
+            "reviewerName": "Matthew Bansford",
+            "reviewerPhoto": "",
+            "rating": 2,
+            "reviewText": "Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer."
+          }
+        ]
+      },
+       {
+         "id": "3",
+         "firstName": "Fredrick",
+         "lastName": "Yalley",
+         "otherNames": "",
+         "email": "fredyalley@gmail.com",
+         "phone": "+233 520 789 258",
+         "photo": "",
+         "rating": 3,
+         "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+         "reviews": [{
+           "reviewerName": "Elikplim Yaa Anumu",
+           "reviewerPhoto": "",
+           "rating": 4,
+           "reviewText": "Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer."
+         }, {
+           "reviewerName": "Jennifer Baidoo",
+           "reviewerPhoto": "",
+           "rating": 2,
+           "reviewText": "Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer."
+         },
+        {
+          "reviewerName": "Jonathan Kwamina Gordon",
+          "reviewerPhoto": "",
+          "rating": 5,
+          "reviewText": "Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer."
+        }]
+       },
+       
+        {
+          "id": "4",
+          "firstName": "Esther",
+          "lastName": "Gordon",
+          "otherNames": "Aba",
+          "email": "esthergordon@gmail.com",
+          "phone": "+233 350 321 500",
+          "photo": "https://randomuser.me/api/portraits/women/8.jpg",
+          "rating": 4,
+          "description": "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.",
+          "reviews": [
+            {
+              "reviewerName": "Titus Fiifi Appiah",
+              "reviewerPhoto": "",
+              "rating": 4,
+              "reviewText": "Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer. Such a great lawyer."
+            }
+          ]
+        }
+    ]
+  }
+}

@@ -1,0 +1,34 @@
+@use './variables' as *;
+
+.page {
+   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+}
+
+.form-page {
+  height: 100vh;
+  background: linear-gradient(to bottom, rgb(29, 41, 81, 0.5), rgb(29, 41, 81, 0.1));
+}
+
+.login-form {
+  width: 60%;
+  margin-inline: auto;
+}
+
+.close-btn, .logout-btn {
+  color: $primary-color;
+  cursor: pointer;
+  transition: all .25s ease-in-out;
+
+  &:hover {
+    transform: scale(0.9);
+  }
+}
+
+.view-profile-photo {
+  border-radius: 50%;
+  width: 4rem;
+  aspect-ratio: 1;
+}
