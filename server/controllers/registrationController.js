@@ -26,6 +26,7 @@ exports.userTypes = async (req, res, next) => {
 };
 
 exports.register = async (req, res, next) => {
+  console.log(req.body);
   try {
     const registrationDetails = await validateRegistration.validateAsync(
       req.body,
