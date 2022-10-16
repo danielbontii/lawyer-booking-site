@@ -9,7 +9,7 @@ import "animate.css";
 import defaultPhoto from "../images/defaultPhoto.png";
 // import axios from "axios";
 // import { toast } from "react-toastify";
-import exampleData from "../lawyers.json";
+import exampleUsers from "../data/users.json";
 
 const ClientDashboard = () => {
   const [lawyers, setLawyers] = useState([]);
@@ -60,7 +60,9 @@ const ClientDashboard = () => {
   // }, []);
 
   useEffect(() => {
-    setLawyers(exampleData.response.data);
+    setLawyers(exampleUsers.response.data.filter(user => {
+      return user.userType === "lawyer"
+    }));
   }, []);
 
   return (
@@ -87,7 +89,7 @@ const ClientDashboard = () => {
         />
       )}
       <Container className="client-dashboard">
-        <Row className="row-cols-2 py-5 gy-4">
+        <Row className="row-cols-lg-2 py-5 gy-4">
           {lawyers.map((lawyer, index) => {
             const {
               id,
