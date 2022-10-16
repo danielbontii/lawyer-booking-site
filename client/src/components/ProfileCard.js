@@ -3,7 +3,6 @@ import { FaEnvelope, FaPhoneAlt, FaStar } from "react-icons/fa";
 import { Row, Col, Card } from "react-bootstrap";
 
 const ProfileCard = ({
-  id,
   firstName,
   lastName,
   otherNames,
@@ -19,20 +18,20 @@ const ProfileCard = ({
       <Col className="card rounded">
         <Card className="p-2">
           <Row className="align-items-center">
-            <Col className="col-3">
-              <img src={photo} alt="" className="card-img-left rounded photo" />
+            <Col className="col-lg-3 col-12">
+              <img src={photo} alt="" className="card-img-lg-left card-img-top rounded photo" />
             </Col>
             <Col className="ps-4">
               <div className="card-body">
-                <h2 className="card-title fs-3 my-3">
+                <h2 className="card-title fs-lg-3 fs-5 my-3">
                   {firstName} {otherNames !== "" && otherNames} {lastName}
                 </h2>
                 <div className="card-subtitle">
-                  <FaEnvelope className="pe-2 fs-4" />
+                  <FaEnvelope className="pe-2 fs-lg-4 fs-3" />
                   {email}
                 </div>
                 <div className="card-subtitle">
-                  <FaPhoneAlt className="pe-2 fs-4" />
+                  <FaPhoneAlt className="pe-2 fs-lg-4 fs-3" />
                   {phone}
                 </div>
                 <div className="card-subtitle text-end">
@@ -46,7 +45,7 @@ const ProfileCard = ({
             </Col>
           </Row>
           <div className="card-text py-3">
-            <Row>
+            <Row className="row-cols-1 row-cols-md-3 gy-3">
               <Col>
                 <button className="btn btn-primary">BOOK LAWYER</button>
               </Col>

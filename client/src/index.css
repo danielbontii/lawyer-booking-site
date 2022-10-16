@@ -30,6 +30,13 @@
   aspect-ratio: 1;
 }
 
+.client-card h3 {
+  color: #1D2951;
+}
+.client-card p {
+  opacity: 0.8;
+}
+
 .contact {
   height: 2rem;
   background-color: #1D2951;
@@ -151,7 +158,7 @@ h1 {
   height: 70vh;
   overflow-x: hidden;
   min-width: 20rem;
-  position: absolute;
+  position: fixed;
   z-index: 10;
   background-color: #ffffff;
   color: gray;
@@ -173,7 +180,8 @@ h1 {
 }
 
 .reviewer-photo {
-  width: 3rem;
+  width: 2rem;
+  aspect-ratio: 1;
   border-radius: 50%;
 }
 
@@ -183,6 +191,12 @@ h1 {
   overflow-x: hidden !important;
 }
 
+@media screen and (max-width: 768px) {
+  .card-overlay {
+    width: 80%;
+    left: 10%;
+  }
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;

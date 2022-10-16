@@ -63,9 +63,9 @@ const RateLawyer = ({
                     className="view-profile-photo ms-3"
                   />
                 </Col>
-                <Col className="col-8 text-uppercase">
-                  <h4 className="fs-5">
-                    Rate {firstName} {otherNames !== "" && otherNames}{" "}
+                <Col className="col-lg-8 col-6 text-uppercase">
+                  <h4 className="fs-lg-4 fs-6">
+                    Rate {firstName} {otherNames !== "" && otherNames}
                     {lastName}
                   </h4>
                 </Col>
