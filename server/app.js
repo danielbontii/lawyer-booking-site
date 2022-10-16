@@ -11,12 +11,11 @@ const morgan = require("morgan");
 app.use(express.json());
 app.use(morgan("dev"));
 
+const registrationRouter = require("./routes/RegistrationRoutes");
+
 //all routes will go before the notfound middleware
 
-//test route
-app.get("/", (req, res) => {
-  res.status(200).send("hello world!");
-});
+app.use("/lba/api/v1/register", registrationRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
