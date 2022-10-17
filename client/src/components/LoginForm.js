@@ -1,19 +1,18 @@
-import {useState} from 'react'
-import { Container, Row, Col, Form } from 'react-bootstrap';
+import { useState } from "react";
+import { Container, Row, Col, Form } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-const LoginForm = ({navigatePage, postRoute}) => {
+const LoginForm = ({ postRoute }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const {
-    email,
-    password,
-  } = formData;
+  const [navigatePage, setNavigatePage] = useState("");
+
+  const { email, password } = formData;
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -30,6 +29,15 @@ const LoginForm = ({navigatePage, postRoute}) => {
       try {
         const response = await axios.post(`${postRoute}`, formData);
         if (response) {
+          if (response.data.userType === "lawyer")
+            setNavigatePage("/lawyer-dashboard");
+
+          if (response.data.userType === "client")
+            setNavigatePage("/client-dashboard");
+
+          if (response.data.userType === "admin")
+            setNavigatePage("/admin-dashboard");
+
           navigate(`/${navigatePage}`);
         }
       } catch (error) {
@@ -39,7 +47,6 @@ const LoginForm = ({navigatePage, postRoute}) => {
 
     postData();
   };
-
 
   return (
     <div className="page">
@@ -82,6 +89,6 @@ const LoginForm = ({navigatePage, postRoute}) => {
       </Container>
     </div>
   );
-}
+};
 
-export default LoginForm
+export default LoginForm;

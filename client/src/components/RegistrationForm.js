@@ -5,7 +5,7 @@ import axios from 'axios'
 import {toast} from 'react-toastify'
 
 
-const RegistrationForm = ({navigatePage, postRoute}) => {
+const RegistrationForm = ({navigatePage, postRoute, userType}) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -14,7 +14,8 @@ const RegistrationForm = ({navigatePage, postRoute}) => {
     email: "",
     phoneNumber: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
+    userType: userType
   });
 
   const { firstName, lastName, otherNames, dob, phoneNumber, email, password, confirmPassword } = formData;

@@ -38,7 +38,7 @@
   height: 70vh;
   overflow-x: hidden;
   min-width: 20rem;
-  position: absolute;
+  position: fixed;
   z-index: 10;
   background-color: #ffffff;
   color: gray;
@@ -60,7 +60,8 @@
 }
 
 .reviewer-photo {
-  width: 3rem;
+  width: 2rem;
+  aspect-ratio: 1;
   border-radius: 50%;
 }
 
@@ -68,4 +69,11 @@
   position: relative;
   z-index: 15;
   overflow-x: hidden !important;
+}
+
+@media screen and(max-width: 768px) {
+  .card-overlay {
+    width: 80%;
+    left: 10%;
+  }
 }

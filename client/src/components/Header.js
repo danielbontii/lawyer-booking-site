@@ -26,7 +26,7 @@ const Header = () => {
               <FaEnvelope className="pe-2 fs-2" />
               pearsonspecterlit@gmail.com
             </Col>
-            <Col className="col-lg-3 col-sm-1"></Col>
+            <Col className="col-lg-4 col-sm-1"></Col>
             <Col className="col-lg-3 d-sm-none d-lg-inline">
               <Row>
                 <Col></Col>
@@ -42,13 +42,7 @@ const Header = () => {
                 <Col>
                   <FaInstagram className="fs-4" />
                 </Col>
-                <Col></Col>
               </Row>
-            </Col>
-            <Col className="col-lg-1 col-sm-2">
-              <Link to="/login-admin">
-                <button className="btn btn-light btn-sm">ADMIN</button>
-              </Link>
             </Col>
           </Row>
         </Container>
@@ -80,14 +74,11 @@ const Header = () => {
               <Link className="nav-link" to="/register-lawyer">
                 REGISTER AS LAWYER
               </Link>
-              <Link className="nav-link" to="/login-lawyer">
-                SIGN IN AS LAWYER
-              </Link>
               <Link className="nav-link" to="/register-client">
                 REGISTER AS CLIENT
               </Link>
-              <Link className="nav-link" to="/login-client">
-                SIGN IN AS CLIENT
+              <Link className="nav-link" to="/login">
+                SIGN IN
               </Link>
             </div>
           </Nav>

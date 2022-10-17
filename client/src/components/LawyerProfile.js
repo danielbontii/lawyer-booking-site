@@ -24,7 +24,7 @@ const LawyerProfile = ({ handleCloseLawyerProfile, lawyerToShow }) => {
         return (
           <Scrollbars className="scrollbar">
             <Row
-              className="mt-2 align-items-center sticky-top bg-white"
+              className="mt-2 align-items-center sticky-top bg-white me-2"
               key={id}
             >
               <Col>
@@ -34,8 +34,8 @@ const LawyerProfile = ({ handleCloseLawyerProfile, lawyerToShow }) => {
                   className="view-profile-photo ms-3"
                 />
               </Col>
-              <Col className="col-8 text-uppercase">
-                <h4 className="fs-5">
+              <Col className="col-lg-8 col-6 text-uppercase">
+                <h4 className="fs-md-4 fs-6">
                   {firstName} {otherNames !== "" && otherNames} {lastName}'s
                   Profile
                 </h4>
@@ -67,7 +67,7 @@ const LawyerProfile = ({ handleCloseLawyerProfile, lawyerToShow }) => {
                   return (
                     <div key={index}>
                       <Row className="align-items-center">
-                        <Col className="col-2">
+                        <Col className="col-1">
                           <img
                             src={
                               reviewerPhoto === ""

@@ -32,3 +32,13 @@
   width: 4rem;
   aspect-ratio: 1;
 }
+
+.client-card {
+  h3 {
+    color: $primary-color;
+  }
+  
+  p {
+    opacity: .8;
+  }
+}
