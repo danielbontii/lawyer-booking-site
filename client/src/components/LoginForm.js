@@ -10,8 +10,6 @@ const LoginForm = ({ postRoute }) => {
     password: "",
   });
 
-  const [navigatePage, setNavigatePage] = useState("");
-
   const { email, password } = formData;
   const navigate = useNavigate();
 
@@ -26,22 +24,32 @@ const LoginForm = ({ postRoute }) => {
     e.preventDefault();
 
     const postData = async () => {
+      let navigatePage;
       try {
         const response = await axios.post(`${postRoute}`, formData);
+        console.log(response.headers);
+        if (response.status == 400) {
+          console.log("here");
+          return;
+        }
         if (response) {
-          if (response.data.userType === "lawyer")
-            setNavigatePage("/lawyer-dashboard");
+          if (response.data.userType === "lawyer") {
+            navigatePage = "lawyer-dashboard";
+          }
 
-          if (response.data.userType === "client")
-            setNavigatePage("/client-dashboard");
+          if (response.data.userType === "client") {
+            navigatePage = "client-dashboard";
+          }
 
-          if (response.data.userType === "admin")
-            setNavigatePage("/admin-dashboard");
+          if (response.data.userType === "admin") {
+            navigatePage = "admin-dashboard";
+          }
 
           navigate(`/${navigatePage}`);
         }
       } catch (error) {
-        toast.error(error.response.data.message);
+        console.log(error);
+        error.response.data.map((err) => toast.error(err.message));
       }
     };
 
