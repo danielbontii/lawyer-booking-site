@@ -37,7 +37,7 @@ exports.register = async (req, res, next) => {
       email,
       password,
       firstName,
-      middleName,
+      otherNames,
       lastName,
       dob,
       phoneNumber,
@@ -55,13 +55,19 @@ exports.register = async (req, res, next) => {
         .json({ msg: `${registrationDetails.email} is already registered` });
     }
 
-    const salt = await bcrypt.genSalt(10);
+    const userTypeQuery = await pool.query(
+      "SELECT id, name FROM user_types WHERE name =$1",
+      [userType]
+    );
 
+    const { id, name } = userTypeQuery.rows[0];
+
+    const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
     const newUser = await pool.query(
       "INSERT INTO users (email, password, user_type_id) VALUES($1, $2, $3) RETURNING *",
-      [email, hashedPassword, userType]
+      [email, hashedPassword, id]
     );
 
     if (newUser.rowCount > 0) {
@@ -71,7 +77,7 @@ exports.register = async (req, res, next) => {
         [
           newUser.rows[0]["id"],
           firstName,
-          middleName,
+          otherNames,
           lastName,
           dob,
           phoneNumber,
@@ -79,14 +85,10 @@ exports.register = async (req, res, next) => {
       );
 
       if (profile.rowCount > 0) {
-        const userTypeName = await pool.query(
-          "SELECT name FROM user_types WHERE id = $1",
-          [userType]
-        );
         res.status(StatusCodes.OK).json({
           id: newUser.rows[0]["id"],
           email: email,
-          userType: userTypeName.rows[0]["name"],
+          userType: name,
         });
       }
     }

@@ -15,7 +15,7 @@ const validateRegistration = Joi.object({
   dob: Joi.date().required(),
   firstName: Joi.string().required(),
   lastName: Joi.string().required(),
-  middleName: Joi.string().allow(""),
+  otherNames: Joi.string().allow(""),
   summary: Joi.string().max(255).allow(""),
   phoneNumber: Joi.string().required(),
 }).with("password", "confirmPassword");

@@ -12,7 +12,11 @@ const LawyerRegistration = () => {
       exit={{ X: window.innerWidth, transition: { duration: 1 } }}
     >
       <Header />
-      <RegistrationForm navigatePage={"lawyer-dashboard"} postRoute="" userType={"lawyer"}/>
+      <RegistrationForm
+        navigatePage={"lawyer-dashboard"}
+        postRoute="lba/api/v1/register"
+        userType={"lawyer"}
+      />
     </motion.div>
   );
 };

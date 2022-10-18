@@ -13,7 +13,11 @@ const LawyerRegistration = () => {
     >
       <Header />
 
-      <RegistrationForm navigatePage={"client-dashboard"} postRoute="" userType={"client"}/>
+      <RegistrationForm
+        navigatePage={"client-dashboard"}
+        postRoute="lba/api/v1/register"
+        userType={"client"}
+      />
     </motion.div>
   );
 };
