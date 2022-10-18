@@ -53,7 +53,9 @@ exports.register = async (req, res, next) => {
     if (isExistentEmail.rowCount > 0) {
       return res
         .status(StatusCodes.CONFLICT)
-        .json({ msg: `${registrationDetails.email} is already registered` });
+        .json([
+          { message: `${registrationDetails.email} is already registered` },
+        ]);
     }
 
     const userTypeQuery = await pool.query(

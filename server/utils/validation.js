@@ -20,6 +20,12 @@ const validateRegistration = Joi.object({
   phoneNumber: Joi.string().required(),
 }).with("password", "confirmPassword");
 
+const validateLogin = Joi.object({
+  email: Joi.string().email().required(),
+  password: Joi.string().required(),
+});
+
 module.exports = {
   validateRegistration,
+  validateLogin,
 };

@@ -13,11 +13,13 @@ app.use(morgan("dev"));
 
 const registrationRouter = require("./routes/RegistrationRoutes");
 const profileRouter = require("./routes/ProfileRoutes");
+const loginRouter = require("./routes/LoginRoutes");
 
 //all routes will go before the notfound middleware
 
 app.use("/lba/api/v1/register", registrationRouter);
 app.use("/lba/api/v1/update-profile", profileRouter);
+app.use("/lba/api/v1/login", loginRouter);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
