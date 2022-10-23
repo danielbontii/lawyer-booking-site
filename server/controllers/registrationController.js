@@ -4,6 +4,9 @@ const bcrypt = require("bcrypt");
 const { StatusCodes } = require("http-status-codes");
 const { validateRegistration } = require("../utils/validation");
 
+const { sendMail } = require("../utils/email");
+const { fetchAdmins, findUserById } = require("../utils/query");
+
 exports.lawyerUserTypeId = async (req, res, next) => {
   const userTypeId = await pool.query(
     "SELECT id FROM user_types WHERE name = 'lawyer'"
@@ -88,6 +91,12 @@ exports.register = async (req, res, next) => {
       );
 
       if (profile.rowCount > 0) {
+        const admins = fetchAdmins();
+        sendMail(
+          admins,
+          "New User Registration",
+          "A new user just registered. Please login and verify the user"
+        );
         res.status(StatusCodes.OK).json({
           id: newUser.rows[0]["id"],
           email: email,
@@ -103,5 +112,24 @@ exports.register = async (req, res, next) => {
     res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
       .send("Something went wrong. Please try again later");
+  }
+};
+
+exports.verifyRegistration = async (req, res, next) => {
+  const { userId } = req.params;
+
+  const verifiedUserUpdate = await pool.query(
+    "UPDATE users SET verified = 1 WHERE id = $1",
+    [userId]
+  );
+
+  if (verifiedUserUpdate.rowCount > 0) {
+    const verifiedUser = findUserById(userId);
+    sendMail(
+      verifiedUser.rows,
+      "Verified Account",
+      "Your account has been verified. Your profile if now open to the public"
+    );
+    res.status(StatusCodes.OK).json("User verified successfully");
   }
 };

@@ -1,4 +1,3 @@
-const { Router } = require("express");
 const express = require("express");
 const router = express.Router();
 
@@ -13,5 +12,9 @@ router
   .get(registrationController.lawyerUserTypeId);
 
 router.route("/").post(registrationController.register);
+
+router
+  .route("/verify-lawyer/:userId")
+  .put(registrationController.verifyRegistration);
 
 module.exports = router;
