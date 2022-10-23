@@ -31,7 +31,7 @@ const fetchLawyerUserTypeId = async () => {
     "SELECT id FROM user_types WHERE name = 'lawyer'"
   );
   if (lawyerUserTypeIdQuery.rowCount > 0) {
-    return userTypeId.rows[0]["id"];
+    return lawyerUserTypeIdQuery.rows[0]["id"];
   }
   return null;
 };

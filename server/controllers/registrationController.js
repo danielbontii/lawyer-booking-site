@@ -78,11 +78,13 @@ exports.register = async (req, res, next) => {
 
       if (profile.rowCount > 0) {
         const admins = fetchAdmins();
-        sendMail(
-          admins,
-          "New User Registration",
-          "A new user just registered. Please login and verify the user"
-        );
+        if (admins.length > 0) {
+          sendMail(
+            admins,
+            "New User Registration",
+            "A new user just registered. Please login and verify the user"
+          );
+        }
         res.status(StatusCodes.OK).json({
           id: newUser.rows[0]["id"],
           email: email,
