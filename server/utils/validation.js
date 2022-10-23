@@ -25,7 +25,6 @@ const validateLogin = Joi.object({
   password: Joi.string().required(),
 });
 
-
 const validateProfileUpdate = Joi.object({
   dob: Joi.date().allow(""),
   firstName: Joi.string().allow(""),
@@ -33,13 +32,19 @@ const validateProfileUpdate = Joi.object({
   otherNames: Joi.string().allow(""),
   summary: Joi.string().max(255).allow(""),
   phoneNumber: Joi.string().allow(""),
-  daily_charge: Joi.string().allow("")
+  daily_charge: Joi.string().allow(""),
 });
 
+const validateAddReview = Joi.object({
+  lawyerId: Joi.string().required(),
+  reviewerId: Joi.string().required(),
+  rating: Joi.number().required(),
+  review: Joi.string().allow(""),
+});
 
 module.exports = {
   validateRegistration,
   validateLogin,
-  validateProfileUpdate
+  validateProfileUpdate,
+  validateAddReview,
 };
-

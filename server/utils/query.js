@@ -26,7 +26,30 @@ const findUserById = async (userId) => {
   return null;
 };
 
+const fetchLawyerUserTypeId = async () => {
+  const lawyerUserTypeIdQuery = await pool.query(
+    "SELECT id FROM user_types WHERE name = 'lawyer'"
+  );
+  if (lawyerUserTypeIdQuery.rowCount > 0) {
+    return userTypeId.rows[0]["id"];
+  }
+  return null;
+};
+
+const fetchClientUserTypeId = async () => {
+  const clientUserTypeIdQuery = await pool.query(
+    "SELECT id FROM user_types WHERE name = 'client'"
+  );
+
+  if (clientUserTypeIdQuery.rowCount > 0) {
+    return clientUserTypeIdQuery.rows[0]["id"];
+  }
+  return null;
+};
+
 module.exports = {
   fetchAdmins,
   findUserById,
+  fetchLawyerUserTypeId,
+  fetchClientUserTypeId,
 };

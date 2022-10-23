@@ -7,20 +7,6 @@ const { validateRegistration } = require("../utils/validation");
 const { sendMail } = require("../utils/email");
 const { fetchAdmins, findUserById } = require("../utils/query");
 
-exports.lawyerUserTypeId = async (req, res, next) => {
-  const userTypeId = await pool.query(
-    "SELECT id FROM user_types WHERE name = 'lawyer'"
-  );
-  return res.status(StatusCodes.OK).json(userTypeId.rows[0]["id"]);
-};
-
-exports.clientUserTypeId = async (req, res, next) => {
-  const userTypeId = await pool.query(
-    "SELECT id FROM user_types WHERE name = 'client'"
-  );
-  return res.status(StatusCodes.OK).json(userTypeId.rows[0]["id"]);
-};
-
 exports.userTypes = async (req, res, next) => {
   const userTypes = await pool.query(
     "SELECT * FROM user_types WHERE name <> 'admin'"

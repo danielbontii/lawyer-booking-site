@@ -31,3 +31,11 @@ CREATE TABLE profiles(
     daily_charge REAL,
     image_url VARCHAR(255)
 );
+
+CREATE TABLE reviews (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id UUID REFERENCES users(id) NOT NULL,
+    reviewer_id UUID REFERENCES users(id) NOT NULL,
+    rating INTEGER NOT NULL,
+    review VARCHAR(750)
+)
