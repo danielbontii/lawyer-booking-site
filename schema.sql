@@ -15,7 +15,8 @@ CREATE TABLE users(
     id uuid PRIMARY KEY DEFAULT uuid_generate_v4(),
     email VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
-    user_type_id UUID REFERENCES user_types(id) NOT NULL
+    user_type_id UUID REFERENCES user_types(id) NOT NULL,
+    verified INTEGER DEFAULT 0
 );
 
 CREATE TABLE profiles(
@@ -27,5 +28,14 @@ CREATE TABLE profiles(
     dob DATE NOT NULL,
     phone_number VARCHAR(10)NOT NULL,
     summary VARCHAR(255),
+    daily_charge REAL,
     image_url VARCHAR(255)
 );
+
+CREATE TABLE reviews (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id UUID REFERENCES users(id) NOT NULL,
+    reviewer_id UUID REFERENCES users(id) NOT NULL,
+    rating INTEGER NOT NULL,
+    review VARCHAR(750)
+)
