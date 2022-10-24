@@ -39,3 +39,14 @@ CREATE TABLE reviews (
     rating INTEGER NOT NULL,
     review VARCHAR(750)
 )
+
+CREATE TABLE bookings (
+    id UUID DEFAULT uuid_generate_v4(),
+    case_title VARCHAR(255) NOT NULL,
+    case_description VARCHAR(750) NOT NULL,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    amount REAL NOT NULL,
+    client_id UUID REFERENCES users(id),
+    lawyer_id UUID REFERENCES users(id)
+)
