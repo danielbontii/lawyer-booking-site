@@ -38,7 +38,7 @@ CREATE TABLE reviews (
     reviewer_id UUID REFERENCES users(id) NOT NULL,
     rating INTEGER NOT NULL,
     review VARCHAR(750)
-)
+);
 
 CREATE TABLE bookings (
     id UUID DEFAULT uuid_generate_v4(),
