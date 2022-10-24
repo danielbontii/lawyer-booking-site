@@ -92,8 +92,8 @@ exports.getLawyerProfiles = async (req, res, next) => {
   const lawyerUserTypeId = await fetchLawyerUserTypeId();
 
   const lawyersQuery = await pool.query(
-    "SELECT id, email FROM users WHERE user_type_id = $1",
-    [lawyerUserTypeId]
+    "SELECT id, email FROM users WHERE user_type_id = $1 AND verified = $2",
+    [lawyerUserTypeId, 1]
   );
 
   let lawyers = lawyersQuery.rows;

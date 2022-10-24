@@ -42,9 +42,20 @@ const validateAddReview = Joi.object({
   review: Joi.string().allow(""),
 });
 
+const validateBooking = Joi.object({
+  caseTitle: Joi.string().max(255).required(),
+  caseDescription: Joi.string().max(750).allow(""),
+  startDate: Joi.date().required(),
+  endDate: Joi.date().required(),
+  amount: Joi.number().required(),
+  clientId: Joi.string().required(),
+  lawyerId: Joi.string().required()
+})
+
 module.exports = {
   validateRegistration,
   validateLogin,
   validateProfileUpdate,
   validateAddReview,
+  validateBooking
 };
