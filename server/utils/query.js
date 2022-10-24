@@ -2,7 +2,7 @@ const pool = require("./db");
 
 const fetchAdmins = async () => {
   const adminIdQuery = await pool.query(
-    "SELECT id FROM user_types WHERE type = 'admin'"
+    "SELECT id FROM user_types WHERE name = 'admin'"
   );
   const admins = await pool.query(
     "SELECT * from users WHERE user_type_id = $1",
