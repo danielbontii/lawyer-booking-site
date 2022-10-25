@@ -16,6 +16,8 @@ router.route("/lawyers").get(profileController.getLawyerProfiles);
 
 router.route("/clients").get(profileController.getClientProfiles);
 
-router.route("/unverified-lawyers").get(profileController.getUnverifiedLawyerProfiles);
+router
+  .route("/unverified-lawyers")
+  .get(profileController.getUnverifiedLawyerProfiles);
 
 module.exports = router;
