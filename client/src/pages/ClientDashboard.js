@@ -7,9 +7,8 @@ import ProfileCard from "../components/ProfileCard";
 import { motion } from "framer-motion";
 import "animate.css";
 import defaultPhoto from "../images/defaultPhoto.png";
-// import axios from "axios";
-// import { toast } from "react-toastify";
-import exampleUsers from "../data/users.json";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const ClientDashboard = () => {
   const [lawyers, setLawyers] = useState([]);
@@ -44,25 +43,19 @@ const ClientDashboard = () => {
     setShowLawyerRating(false);
   };
 
-  // useEffect(() => {
-  //   const getLawyers = async () => {
-  //     try {
-  //       const response = await axios.get(``);
-
-  //       if (response) {
-  //         setLawyers(response.data);
-  //       }
-  //     } catch (error) {
-  //       toast.error(error.response.data.message);
-  //     }
-  //   };
-  //   getLawyers();
-  // }, []);
-
   useEffect(() => {
-    setLawyers(exampleUsers.response.data.filter(user => {
-      return user.userType === "lawyer"
-    }));
+    const getLawyers = async () => {
+      try {
+        const response = await axios.get(`lba/api/v1/profiles/lawyers`);
+
+        if (response) {
+          setLawyers(response.data);
+        }
+      } catch (error) {
+        toast.error(error.response.data.message);
+      }
+    };
+    getLawyers();
   }, []);
 
   return (
@@ -93,14 +86,17 @@ const ClientDashboard = () => {
           {lawyers.map((lawyer, index) => {
             const {
               id,
-              firstName,
-              lastName,
-              otherNames,
               email,
-              phone,
-              photo,
               rating,
             } = lawyer;
+
+            const {
+              first_name:firstName,
+              last_name:lastName,
+              other_names:otherNames,
+              phone_number:phone,
+              image_url:photo,
+            } = lawyer.profile;
 
             return (
               <ProfileCard
@@ -112,7 +108,7 @@ const ClientDashboard = () => {
                 email={email}
                 phone={phone}
                 rating={rating}
-                photo={photo === "" ? defaultPhoto : photo}
+                photo={photo === null ? defaultPhoto : photo}
                 handleViewProfile={() => handleViewProfile(id)}
                 handleRateLawyer={() => handleRateLawyer(id)}
               />

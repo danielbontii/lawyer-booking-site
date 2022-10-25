@@ -61,7 +61,7 @@ const LawyerProfile = ({ handleCloseLawyerProfile, lawyerToShow }) => {
             <Container className="p-4">
               <div>
                 {reviews.map((review, index) => {
-                  const { reviewerName, reviewerPhoto, reviewText, rating } =
+                  const { reviewer_name:reviewerName, reviewer_photo:reviewerPhoto, review:reviewText, rating } =
                     review;
 
                   return (
@@ -70,7 +70,7 @@ const LawyerProfile = ({ handleCloseLawyerProfile, lawyerToShow }) => {
                         <Col className="col-1">
                           <img
                             src={
-                              reviewerPhoto === ""
+                              reviewerPhoto === null
                                 ? defaultPhoto
                                 : reviewerPhoto
                             }
