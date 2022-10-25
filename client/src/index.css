@@ -191,6 +191,20 @@ h1 {
   overflow-x: hidden !important;
 }
 
+.side-panel {
+  height: 90vh;
+  position: fixed;
+}
+
+.right {
+  width: 75%;
+  margin-left: 25%;
+}
+
+.hover-cursor {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 768px) {
   .card-overlay {
     width: 80%;
