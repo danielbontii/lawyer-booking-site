@@ -1,26 +1,24 @@
-import { FaTimes, FaStar } from "react-icons/fa";
+import { FaTimes, FaStar, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import { Container, Row, Col } from "react-bootstrap";
-import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import defaultPhoto from "../images/defaultPhoto.png";
-import {Scrollbars} from 'react-custom-scrollbars'
+import { Scrollbars } from "react-custom-scrollbars";
 import "animate.css";
-
 
 const LawyerProfile = ({ handleCloseLawyerProfile, lawyerToShow }) => {
   return (
     <div className="card-overlay animate__animated animate__fadeInDown rounded">
       {lawyerToShow.map((lawyer) => {
+        const { id, email, reviews } = lawyer;
+
         const {
-          id,
-          firstName,
-          lastName,
-          otherNames,
-          email,
-          phone,
-          description,
-          photo,
-          reviews,
-        } = lawyer;
+          first_name: firstName,
+          last_name: lastName,
+          other_names: otherNames,
+          phone_number: phone,
+          summary: description,
+          image_url: photo,
+        } = lawyer.profile;
+
         return (
           <Scrollbars className="scrollbar">
             <Row
@@ -29,7 +27,7 @@ const LawyerProfile = ({ handleCloseLawyerProfile, lawyerToShow }) => {
             >
               <Col>
                 <img
-                  src={photo === "" ? defaultPhoto : photo}
+                  src={photo === null ? defaultPhoto : photo}
                   alt="Lawyer"
                   className="view-profile-photo ms-3"
                 />
@@ -61,8 +59,12 @@ const LawyerProfile = ({ handleCloseLawyerProfile, lawyerToShow }) => {
             <Container className="p-4">
               <div>
                 {reviews.map((review, index) => {
-                  const { reviewer_name:reviewerName, reviewer_photo:reviewerPhoto, review:reviewText, rating } =
-                    review;
+                  const {
+                    reviewer_name: reviewerName,
+                    reviewer_photo: reviewerPhoto,
+                    review: reviewText,
+                    rating,
+                  } = review;
 
                   return (
                     <div key={index}>
