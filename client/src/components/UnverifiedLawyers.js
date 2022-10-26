@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import LawyerProfile from "../components/LawyerProfile";
-import ProfileCard from "../components/ProfileCard";
 import { motion } from "framer-motion";
 import "animate.css";
 import defaultPhoto from "../images/defaultPhoto.png";
 // import axios from "axios";
 // import { toast } from "react-toastify";
 import exampleUsers from "../data/users.json";
+import VerifiedLawyer from "./UnverifiedLawyer";
 
 const UnverifiedLawyers = () => {
   const [lawyers, setLawyers] = useState([]);
@@ -23,15 +23,11 @@ const UnverifiedLawyers = () => {
     setShowLawyerProfile(true);
   };
 
-
   const handleCloseLawyerProfile = () => {
     setShowLawyerProfile(false);
   };
 
-  const handleVerifyLawyer = (id) => {
-    
-  }
-
+  const handleVerifyLawyer = (id) => {};
 
   // useEffect(() => {
   //   const getLawyers = async () => {
@@ -58,12 +54,11 @@ const UnverifiedLawyers = () => {
 
   return (
     <motion.div
-      className="dashboard-page"
       initial={{ opacity: 0 }}
       animate={{ opacity: "100%" }}
       exit={{ X: window.innerWidth, transition: { duration: 1 } }}
     >
-      {(showLawyerProfile) && (
+      {showLawyerProfile && (
         <div className="show-profile-active animate__animated animate__fadeInDownBig"></div>
       )}
       {showLawyerProfile && (
@@ -87,7 +82,7 @@ const UnverifiedLawyers = () => {
             } = lawyer;
 
             return (
-              <ProfileCard
+              <VerifiedLawyer
                 key={index}
                 id={id}
                 firstName={firstName}

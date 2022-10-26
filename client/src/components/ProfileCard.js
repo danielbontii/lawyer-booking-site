@@ -11,7 +11,8 @@ const ProfileCard = ({
   phone,
   photo,
   handleViewProfile,
-  handleRateLawyer
+  handleRateLawyer,
+  handleBookLawyer,
 }) => {
   return (
     <div>
@@ -47,7 +48,7 @@ const ProfileCard = ({
           <div className="card-text py-3">
             <Row className="row-cols-1 row-cols-md-3 gy-3">
               <Col>
-                <button className="btn btn-primary">BOOK LAWYER</button>
+                <button className="btn btn-primary" onClick={(id) => handleBookLawyer(id)}>BOOK LAWYER</button>
               </Col>
               <Col>
                 <button className="btn btn-outline-primary" onClick={(id) => handleRateLawyer(id)}>RATE LAWYER</button>

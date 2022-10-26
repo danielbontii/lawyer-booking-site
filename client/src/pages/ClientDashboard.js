@@ -10,6 +10,7 @@ import defaultPhoto from "../images/defaultPhoto.png";
 // import axios from "axios";
 // import { toast } from "react-toastify";
 import exampleUsers from "../data/users.json";
+import BookLawyer from "../components/BookLawyer";
 
 const ClientDashboard = () => {
   const [lawyers, setLawyers] = useState([]);
@@ -17,6 +18,9 @@ const ClientDashboard = () => {
   const [showLawyerRating, setShowLawyerRating] = useState(false);
   const [lawyerToShow, setLawyerToShow] = useState([]);
   const [lawyerToRate, setLawyerToRate] = useState([]);
+  const [showBookLawyer, setShowBookLawyer] = useState(false);
+  const [lawyerToBook, setLawyerToBook] = useState([]);
+
 
   const handleViewProfile = (id) => {
     setLawyerToShow(
@@ -36,13 +40,27 @@ const ClientDashboard = () => {
     setShowLawyerRating(true);
   };
 
+    const handleBookLawyer = (id) => {
+      setLawyerToBook(
+        lawyers.filter((lawyer) => {
+          return lawyer.id === id;
+        })
+      );
+      setShowBookLawyer(true);
+    };
+
   const handleCloseLawyerProfile = () => {
     setShowLawyerProfile(false);
   };
  
+   const handleCloseBookLawyer = () => {
+     setShowBookLawyer(false);
+   };
+
   const handleCloseLawyerRating = () => {
     setShowLawyerRating(false);
   };
+
 
   // useEffect(() => {
   //   const getLawyers = async () => {
@@ -72,7 +90,7 @@ const ClientDashboard = () => {
       animate={{ opacity: "100%" }}
       exit={{ X: window.innerWidth, transition: { duration: 1 } }}
     >
-      {(showLawyerProfile || showLawyerRating) && (
+      {(showLawyerProfile || showLawyerRating || showBookLawyer) && (
         <div className="show-profile-active animate__animated animate__fadeInDownBig"></div>
       )}
       <DashboardHeader />
@@ -88,6 +106,7 @@ const ClientDashboard = () => {
           handleCloseLawyerRating={handleCloseLawyerRating}
         />
       )}
+      {showBookLawyer && (<BookLawyer lawyerToBook={lawyerToBook} handleCloseBookLawyer={handleCloseBookLawyer}/>)}
       <Container className="client-dashboard">
         <Row className="row-cols-lg-2 py-5 gy-4">
           {lawyers.map((lawyer, index) => {
@@ -115,6 +134,7 @@ const ClientDashboard = () => {
                 photo={photo === "" ? defaultPhoto : photo}
                 handleViewProfile={() => handleViewProfile(id)}
                 handleRateLawyer={() => handleRateLawyer(id)}
+                handleBookLawyer={() => handleBookLawyer(id)}
               />
             );
           })}

@@ -76,7 +76,7 @@ return (
     {showCase && (
       <CaseFile caseToView={caseToView} handleCloseCase={handleCloseCase} />
     )}
-    <div className="side-panel bg-primary w-25 text-white fs-2 ps-5 pt-5">
+    <div className="side-panel bg-primary w-25 text-white fs-3 ps-5 pt-5 fw-bold">
       <p className="hover-cursor" onClick={handleShowVerifiedLawyers}>Verified Lawyers</p>
       <p className="hover-cursor" onClick={handleShowUnverifiedLawyers}>Unverified Lawyers</p>
       <p className="hover-cursor" onClick={handleShowCases}>Cases</p>

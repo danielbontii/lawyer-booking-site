@@ -2,7 +2,7 @@ import React from "react";
 import { FaEnvelope, FaPhoneAlt, FaStar } from "react-icons/fa";
 import { Row, Col, Card } from "react-bootstrap";
 
-const UnverifiedLawyer = ({
+const VerifiedLawyer = ({
   firstName,
   lastName,
   otherNames,
@@ -52,15 +52,6 @@ const UnverifiedLawyer = ({
             <Row className="row-cols-1 row-cols-md-2 gy-3">
               <Col className="col-6">
                 <button
-                  className="btn btn-primary"
-                  style={{ width: "10rem" }}
-                  onClick={handleVerifyLawyer}
-                >
-                  VERIFY LAWYER
-                </button>
-              </Col>
-              <Col className="col-6">
-                <button
                   className="btn btn-link"
                   style={{ width: "10rem" }}
                   onClick={(id) => handleViewProfile(id)}
@@ -76,4 +67,4 @@ const UnverifiedLawyer = ({
   );
 };
 
-export default UnverifiedLawyer;
+export default VerifiedLawyer;
