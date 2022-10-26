@@ -50,6 +50,7 @@ exports.login = async (req, res, next) => {
     });
 
     res.status(StatusCodes.OK).json({
+      id,
       msg: "Login success",
       name: `${firstName} ${lastName}`,
       userType,

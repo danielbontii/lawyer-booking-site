@@ -76,3 +76,23 @@ exports.getBookings = async (req, res, next) => {
 
   res.status(StatusCodes.OK).json({ bookings });
 };
+
+exports.getLawyerBookings = async (req, res, next) => {
+  const { lawyerId } = req.params;
+
+  const bookingsQuery = await pool.query(
+    "SELECT * FROM bookings WHERE bookings.lawyer_id = $1",
+    [lawyerId]
+  );
+
+  let bookings = bookingsQuery.rows;
+  for (let booking of bookings) {
+    const clientQuery = await pool.query(
+      "SELECT profiles .*, users.email FROM profiles LEFT JOIN users on users.id = profiles.user_id WHERE user_id = $1",
+      [booking.client_id]
+    );
+    booking.client = clientQuery.rows[0];
+  }
+
+  res.status(StatusCodes.OK).send(bookings);
+};
