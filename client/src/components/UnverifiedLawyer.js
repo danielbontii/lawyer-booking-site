@@ -49,6 +49,7 @@ const UnverifiedLawyer = ({
             </Col>
           </Row>
           <div className="card-text py-3">
+<<<<<<< HEAD
             <Row className="row-cols-1 row-cols-md-2 gy-3">
               <Col className="col-6">
                 <button
@@ -63,6 +64,23 @@ const UnverifiedLawyer = ({
                 <button
                   className="btn btn-link"
                   style={{ width: "10rem" }}
+=======
+            <Row className="row-cols-1 row-cols-md-3 gy-3">
+              <Col>
+                <button className="btn btn-primary">BOOK LAWYER</button>
+              </Col>
+              <Col>
+                <button
+                  className="btn btn-outline-primary"
+                  onClick={(id) => handleVerifyLawyer(id)}
+                >
+                  RATE LAWYER
+                </button>
+              </Col>
+              <Col>
+                <button
+                  className="btn btn-link"
+>>>>>>> main
                   onClick={(id) => handleViewProfile(id)}
                 >
                   VIEW PROFILE

@@ -102,7 +102,8 @@ exports.getLawyerProfiles = async (req, res, next) => {
     lawyer.rating = 0;
     lawyer.userType = "lawyer";
     const reviewsQuery = await pool.query(
-      "SELECT * FROM reviews WHERE user_id = $1",
+      "SELECT reviews .*, profiles.image_url as reviewer_photo, CONCAT(profiles.first_name, ' ', profiles.other_names, ' ', profiles.last_name) as reviewer_name " +
+        "FROM reviews LEFT JOIN profiles ON profiles.user_id = reviews.user_id WHERE reviews.user_id = $1",
       [lawyer.id]
     );
     lawyer.reviews = reviewsQuery.rows;
@@ -113,7 +114,7 @@ exports.getLawyerProfiles = async (req, res, next) => {
     lawyer.profile = profileQuery.rows[0];
   }
 
-  res.status(StatusCodes.OK).json({ lawyers });
+  res.status(StatusCodes.OK).send(lawyers);
 };
 
 exports.getClientProfiles = async (req, res, next) => {

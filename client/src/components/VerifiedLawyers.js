@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import LawyerProfile from "../components/LawyerProfile";
@@ -104,3 +105,14 @@ const VerifiedLawyers = () => {
 };
 
 export default VerifiedLawyers;
+=======
+import React from 'react'
+
+const VerifiedLawyers = () => {
+  return (
+    <div>VerifiedLawyers</div>
+  )
+}
+
+export default VerifiedLawyers
+>>>>>>> main

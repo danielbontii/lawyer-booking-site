@@ -1,13 +1,20 @@
 import { useState, useEffect } from "react";
 import { Container, Row } from "react-bootstrap";
 import LawyerProfile from "../components/LawyerProfile";
+<<<<<<< HEAD
+=======
+import ProfileCard from "../components/ProfileCard";
+>>>>>>> main
 import { motion } from "framer-motion";
 import "animate.css";
 import defaultPhoto from "../images/defaultPhoto.png";
 // import axios from "axios";
 // import { toast } from "react-toastify";
 import exampleUsers from "../data/users.json";
+<<<<<<< HEAD
 import VerifiedLawyer from "./UnverifiedLawyer";
+=======
+>>>>>>> main
 
 const UnverifiedLawyers = () => {
   const [lawyers, setLawyers] = useState([]);
@@ -23,11 +30,22 @@ const UnverifiedLawyers = () => {
     setShowLawyerProfile(true);
   };
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
   const handleCloseLawyerProfile = () => {
     setShowLawyerProfile(false);
   };
 
+<<<<<<< HEAD
   const handleVerifyLawyer = (id) => {};
+=======
+  const handleVerifyLawyer = (id) => {
+    
+  }
+
+>>>>>>> main
 
   // useEffect(() => {
   //   const getLawyers = async () => {
@@ -54,11 +72,19 @@ const UnverifiedLawyers = () => {
 
   return (
     <motion.div
+<<<<<<< HEAD
+=======
+      className="dashboard-page"
+>>>>>>> main
       initial={{ opacity: 0 }}
       animate={{ opacity: "100%" }}
       exit={{ X: window.innerWidth, transition: { duration: 1 } }}
     >
+<<<<<<< HEAD
       {showLawyerProfile && (
+=======
+      {(showLawyerProfile) && (
+>>>>>>> main
         <div className="show-profile-active animate__animated animate__fadeInDownBig"></div>
       )}
       {showLawyerProfile && (
@@ -82,7 +108,11 @@ const UnverifiedLawyers = () => {
             } = lawyer;
 
             return (
+<<<<<<< HEAD
               <VerifiedLawyer
+=======
+              <ProfileCard
+>>>>>>> main
                 key={index}
                 id={id}
                 firstName={firstName}
