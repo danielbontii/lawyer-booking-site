@@ -2,7 +2,7 @@ import React from "react";
 import { FaEnvelope, FaPhoneAlt, FaStar } from "react-icons/fa";
 import { Row, Col, Card } from "react-bootstrap";
 
-const ProfileCard = ({
+const UnverifiedLawyer = ({
   firstName,
   lastName,
   otherNames,
@@ -11,8 +11,7 @@ const ProfileCard = ({
   phone,
   photo,
   handleViewProfile,
-  handleRateLawyer,
-  handleBookLawyer,
+  handleVerifyLawyer,
 }) => {
   return (
     <div>
@@ -20,7 +19,11 @@ const ProfileCard = ({
         <Card className="p-2">
           <Row className="align-items-center">
             <Col className="col-lg-3 col-12">
-              <img src={photo} alt="" className="card-img-lg-left card-img-top rounded photo" />
+              <img
+                src={photo}
+                alt=""
+                className="card-img-lg-left card-img-top rounded photo"
+              />
             </Col>
             <Col className="ps-4">
               <div className="card-body">
@@ -46,16 +49,20 @@ const ProfileCard = ({
             </Col>
           </Row>
           <div className="card-text py-3">
-            <Row className="row-cols-1 row-cols-md-3 gy-3">
-              <Col>
-                <button className="btn btn-primary" onClick={(id) => handleBookLawyer(id)}>BOOK LAWYER</button>
+            <Row className="row-cols-1 row-cols-md-2 gy-3">
+              <Col className="col-6">
+                <button
+                  className="btn btn-primary"
+                  style={{ width: "10rem" }}
+                  onClick={handleVerifyLawyer}
+                >
+                  VERIFY LAWYER
+                </button>
               </Col>
-              <Col>
-                <button className="btn btn-outline-primary" onClick={(id) => handleRateLawyer(id)}>RATE LAWYER</button>
-              </Col>
-              <Col>
+              <Col className="col-6">
                 <button
                   className="btn btn-link"
+                  style={{ width: "10rem" }}
                   onClick={(id) => handleViewProfile(id)}
                 >
                   VIEW PROFILE
@@ -69,4 +76,4 @@ const ProfileCard = ({
   );
 };
 
-export default ProfileCard;
+export default UnverifiedLawyer;

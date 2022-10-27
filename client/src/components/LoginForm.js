@@ -28,7 +28,7 @@ const LoginForm = ({ postRoute }) => {
       try {
         const response = await axios.post(`${postRoute}`, formData);
         console.log(response.headers);
-        if (response.status == 400) {
+        if (response.status === 400) {
           console.log("here");
           return;
         }
