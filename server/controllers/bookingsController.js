@@ -49,14 +49,14 @@ exports.bookLawyer = async (req, res, next) => {
   }
 };
 
-const getUserName = async (userId) => {
+const getLawyerOrClientDetails = async (userId) => {
   console.log("here");
-  const nameQuery = await pool.query(
-    "SELECT CONCAT(first_name, ' ', other_names, ' ', last_name) " +
-      "AS name FROM profiles WHERE user_id = $1",
-    [userId]
+  const detailsQuery = await pool.query(
+    "SELECT profiles .*, users.email FROM profiles LEFT JOIN users on users.id = profiles.user_id WHERE profiles.user_id = $1",[
+      userId
+    ]
   );
-  return nameQuery.rows[0]["name"];
+  return detailsQuery.rows[0];
 };
 
 exports.getBookings = async (req, res, next) => {
@@ -69,12 +69,12 @@ exports.getBookings = async (req, res, next) => {
 
   if (bookingsQuery.rowCount > 0) {
     for (let booking of bookings) {
-      booking.lawyer_name = await getUserName(booking.lawyer_id);
-      booking.client_name = await getUserName(booking.client_id);
+      booking.lawyer = await getLawyerOrClientDetails(booking.lawyer_id);
+      booking.client = await getLawyerOrClientDetails(booking.client_id);
     }
   }
 
-  res.status(StatusCodes.OK).json({ bookings });
+  res.status(StatusCodes.OK).send(bookings);
 };
 
 exports.getLawyerBookings = async (req, res, next) => {
