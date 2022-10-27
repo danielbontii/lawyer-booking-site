@@ -1,6 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
 
-
 const ClientCard = ({
   caseTitle,
   caseDescription,
@@ -10,7 +9,7 @@ const ClientCard = ({
   lastName,
   phone,
   email,
-  handleViewCase
+  handleViewCase,
 }) => {
   return (
     <Container className="bg-white rounded my-2 client-card border-top border-5 border-primary p-3">
@@ -27,8 +26,13 @@ const ClientCard = ({
           <p>Case Description:</p>
         </Col>
         <Col>
-          <p className="d-inline">{caseDescription.substring(0, 150)}...</p>
-          <button className="btn btn-link d-inline" onClick={(id) => handleViewCase(id)}>Read More</button>
+          <p className="d-inline">{caseDescription.substring(0, 120)}...</p>
+          <button
+            className="btn btn-link d-inline"
+            onClick={(id) => handleViewCase(id)}
+          >
+            Read More
+          </button>
         </Col>
       </Row>
       <Row>
@@ -45,6 +49,6 @@ const ClientCard = ({
       </Row>
     </Container>
   );
-}
+};
 
-export default ClientCard
+export default ClientCard;

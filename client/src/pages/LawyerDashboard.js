@@ -18,6 +18,21 @@ const LawyerDashboard = () => {
     setCases(exampleCases.response.data);
   }, []);
 
+  // useEffect(() => {
+  //   const getCases = async () => {
+  //     try {
+  //       const response = await axios.get(`cases`);
+
+  //       if (response) {
+  //         setCases(response.data);
+  //       }
+  //     } catch (error) {
+  //       toast.error(error.response.data.message);
+  //     }
+  //   };
+  //   getCases();
+  // }, []);
+
   useEffect(() => {
     setClients(
       exampleUsers.response.data.filter((user) => {
