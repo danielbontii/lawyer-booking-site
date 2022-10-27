@@ -10,7 +10,7 @@ import defaultPhoto from "../images/defaultPhoto.png";
 
 import axios from "axios";
 import { toast } from "react-toastify";
-
+import BookLawyer from "../components/BookLawyer";
 
 const ClientDashboard = () => {
   const [lawyers, setLawyers] = useState([]);
@@ -20,7 +20,6 @@ const ClientDashboard = () => {
   const [lawyerToRate, setLawyerToRate] = useState([]);
   const [showBookLawyer, setShowBookLawyer] = useState(false);
   const [lawyerToBook, setLawyerToBook] = useState([]);
-
 
   const handleViewProfile = (id) => {
     setLawyerToShow(
@@ -40,27 +39,26 @@ const ClientDashboard = () => {
     setShowLawyerRating(true);
   };
 
-    const handleBookLawyer = (id) => {
-      setLawyerToBook(
-        lawyers.filter((lawyer) => {
-          return lawyer.id === id;
-        })
-      );
-      setShowBookLawyer(true);
-    };
+  const handleBookLawyer = (id) => {
+    setLawyerToBook(
+      lawyers.filter((lawyer) => {
+        return lawyer.id === id;
+      })
+    );
+    setShowBookLawyer(true);
+  };
 
   const handleCloseLawyerProfile = () => {
     setShowLawyerProfile(false);
   };
- 
-   const handleCloseBookLawyer = () => {
-     setShowBookLawyer(false);
-   };
+
+  const handleCloseBookLawyer = () => {
+    setShowBookLawyer(false);
+  };
 
   const handleCloseLawyerRating = () => {
     setShowLawyerRating(false);
   };
-
 
   useEffect(() => {
     const getLawyers = async () => {
@@ -100,22 +98,23 @@ const ClientDashboard = () => {
           handleCloseLawyerRating={handleCloseLawyerRating}
         />
       )}
-      {showBookLawyer && (<BookLawyer lawyerToBook={lawyerToBook} handleCloseBookLawyer={handleCloseBookLawyer}/>)}
+      {showBookLawyer && (
+        <BookLawyer
+          lawyerToBook={lawyerToBook}
+          handleCloseBookLawyer={handleCloseBookLawyer}
+        />
+      )}
       <Container className="client-dashboard">
         <Row className="row-cols-lg-2 py-5 gy-4">
           {lawyers.map((lawyer, index) => {
-            const {
-              id,
-              email,
-              rating,
-            } = lawyer;
+            const { id, email, rating } = lawyer;
 
             const {
-              first_name:firstName,
-              last_name:lastName,
-              other_names:otherNames,
-              phone_number:phone,
-              image_url:photo,
+              first_name: firstName,
+              last_name: lastName,
+              other_names: otherNames,
+              phone_number: phone,
+              image_url: photo,
             } = lawyer.profile;
 
             return (
