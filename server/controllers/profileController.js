@@ -159,5 +159,5 @@ exports.getUnverifiedLawyerProfiles = async (req, res, next) => {
     }
   }
 
-  res.status(StatusCodes.OK).json({ unverifiedProfiles });
+  res.status(StatusCodes.OK).send(unverifiedProfiles);
 };

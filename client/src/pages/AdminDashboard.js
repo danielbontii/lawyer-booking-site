@@ -5,8 +5,7 @@ import { Row, Col } from "react-bootstrap";
 import DashboardHeader from "../components/DashboardHeader";
 import ClientLawyerCard from "../components/ClientLawyerCard";
 import CaseFile from "../components/CaseFile";
-import exampleCases from "../data/cases.json";
-import exampleUsers from "../data/users.json";
+
 import VerifiedLawyers from "../components/VerifiedLawyers";
 import UnverifiedLawyers from "../components/UnverifiedLawyers";
 import axios from "axios";
