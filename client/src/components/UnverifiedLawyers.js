@@ -7,6 +7,7 @@ import defaultPhoto from "../images/defaultPhoto.png";
 import axios from "axios";
 import { toast } from "react-toastify";
 import VerifiedLawyer from "./UnverifiedLawyer";
+import { API_BASE } from "../apibase";
 
 const UnverifiedLawyers = () => {
   const [lawyers, setLawyers] = useState([]);
@@ -32,7 +33,7 @@ const UnverifiedLawyers = () => {
     const getLawyers = async () => {
       try {
         const response = await axios.get(
-          `lba/api/v1/profiles/unverified-lawyers`
+          `${API_BASE}/lba/api/v1/profiles/unverified-lawyers`
         );
 
         if (response) {
@@ -63,18 +64,15 @@ const UnverifiedLawyers = () => {
       <Container className="client-dashboard">
         <Row className="row-cols-lg-2 py-5 gy-4">
           {lawyers.map((lawyer, index) => {
-            const {
-              id,
-              rating,
-            } = lawyer;
+            const { id, rating } = lawyer;
 
             const {
-              first_name:firstName,
-              last_name:lastName,
-              other_names:otherNames,
+              first_name: firstName,
+              last_name: lastName,
+              other_names: otherNames,
               email,
-              phone_number:phone,
-              image_url:photo,
+              phone_number: phone,
+              image_url: photo,
             } = lawyer.profile;
 
             return (

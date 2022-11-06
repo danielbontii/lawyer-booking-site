@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import RegistrationForm from "../components/RegistrationForm";
 import { motion } from "framer-motion";
+import { API_BASE } from "../apibase";
 
 const LawyerRegistration = () => {
   return (
@@ -15,7 +16,7 @@ const LawyerRegistration = () => {
 
       <RegistrationForm
         navigatePage={"client-dashboard"}
-        postRoute="lba/api/v1/register"
+        postRoute={`${API_BASE}/lba/api/v1/register`}
         userType={"client"}
       />
     </motion.div>
