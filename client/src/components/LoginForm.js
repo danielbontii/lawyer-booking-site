@@ -34,6 +34,7 @@ const LoginForm = ({ postRoute }) => {
         }
         if (response) {
           if (response.data.userType === "lawyer") {
+            localStorage.setItem("lawyerId", response.data.id);
             navigatePage = "lawyer-dashboard";
           }
 

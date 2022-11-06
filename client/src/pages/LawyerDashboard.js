@@ -5,40 +5,28 @@ import { Container, Row, Col } from "react-bootstrap";
 import DashboardHeader from "../components/DashboardHeader";
 import ClientCard from "../components/ClientCard";
 import CaseFile from "../components/CaseFile";
-import exampleCases from "../data/cases.json";
-import exampleUsers from "../data/users.json";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const LawyerDashboard = () => {
   const [cases, setCases] = useState([]);
-  const [clients, setClients] = useState([]);
   const [caseToView, setCaseToView] = useState([]);
   const [showCase, setShowCase] = useState(false);
 
   useEffect(() => {
-    setCases(exampleCases.response.data);
-  }, []);
+    const getCases = async () => {
+      try {
+        const lawyerId = localStorage.getItem("lawyerId");
+        const response = await axios.get("lba/api/v1/bookings/" + lawyerId);
 
-  // useEffect(() => {
-  //   const getCases = async () => {
-  //     try {
-  //       const response = await axios.get(`cases`);
-
-  //       if (response) {
-  //         setCases(response.data);
-  //       }
-  //     } catch (error) {
-  //       toast.error(error.response.data.message);
-  //     }
-  //   };
-  //   getCases();
-  // }, []);
-
-  useEffect(() => {
-    setClients(
-      exampleUsers.response.data.filter((user) => {
-        return user.userType === "client";
-      })
-    );
+        if (response) {
+          setCases(response.data);
+        }
+      } catch (error) {
+        toast.error(error.response.data.message);
+      }
+    };
+    getCases();
   }, []);
 
   const handleViewCase = (id) => {
@@ -71,44 +59,34 @@ const LawyerDashboard = () => {
       <Container className="my-3">
         <Row className="row-cols-lg-2 row-cols-1">
           {cases.map((lawCase, index) => {
-            const { id, caseTitle, caseDescription, clientId } = lawCase;
+            const {
+              id,
+              case_title: caseTitle,
+              case_description: caseDescription,
+            } = lawCase;
+            const {
+              first_name: firstName,
+              last_name: lastName,
+              other_names: otherNames,
+              phone_number: phoneNumber,
+              email,
+            } = lawCase.client;
             return (
               <Col>
                 <ClientCard
                   key={index}
                   caseTitle={caseTitle}
                   caseDescription={caseDescription}
-                  firstName={
-                    clients.filter((client) => {
-                      return client.id === clientId;
-                    })[0].firstName
-                  }
-                  lastName={
-                    clients.filter((client) => {
-                      return client.id === clientId;
-                    })[0].lastName
-                  }
-                  otherNames={
-                    clients.filter((client) => {
-                      return client.id === clientId;
-                    })[0].otherNames
-                  }
-                  email={
-                    clients.filter((client) => {
-                      return client.id === clientId;
-                    })[0].email
-                  }
-                  phone={
-                    clients.filter((client) => {
-                      return client.id === clientId;
-                    })[0].phone
-                  }
+                  firstName={firstName}
+                  lastName={lastName}
+                  otherNames={otherNames}
+                  email={email}
+                  phone={phoneNumber}
                   handleViewCase={() => handleViewCase(id)}
                 />
               </Col>
             );
           })}
-          ;
         </Row>
       </Container>
     </motion.div>

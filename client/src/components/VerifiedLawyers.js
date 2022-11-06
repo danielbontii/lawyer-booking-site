@@ -4,9 +4,8 @@ import LawyerProfile from "../components/LawyerProfile";
 import { motion } from "framer-motion";
 import "animate.css";
 import defaultPhoto from "../images/defaultPhoto.png";
-// import axios from "axios";
-// import { toast } from "react-toastify";
-import exampleUsers from "../data/users.json";
+import axios from "axios";
+import { toast } from "react-toastify";
 import VerifiedLawyer from "./VerifiedLawyer";
 
 const VerifiedLawyers = () => {
@@ -29,27 +28,19 @@ const VerifiedLawyers = () => {
 
   const handleVerifyLawyer = (id) => {};
 
-  // useEffect(() => {
-  //   const getLawyers = async () => {
-  //     try {
-  //       const response = await axios.get(``);
-
-  //       if (response) {
-  //         setLawyers(response.data);
-  //       }
-  //     } catch (error) {
-  //       toast.error(error.response.data.message);
-  //     }
-  //   };
-  //   getLawyers();
-  // }, []);
-
   useEffect(() => {
-    setLawyers(
-      exampleUsers.response.data.filter((user) => {
-        return user.userType === "lawyer";
-      })
-    );
+    const getLawyers = async () => {
+      try {
+        const response = await axios.get(`lba/api/v1/profiles/lawyers`);
+
+        if (response) {
+          setLawyers(response.data);
+        }
+      } catch (error) {
+        toast.error(error.response.data.message);
+      }
+    };
+    getLawyers();
   }, []);
 
   return (
@@ -70,16 +61,15 @@ const VerifiedLawyers = () => {
       <Container className="client-dashboard">
         <Row className="row-cols-lg-2 py-5 gy-4">
           {lawyers.map((lawyer, index) => {
+            const { id, email, rating } = lawyer;
+
             const {
-              id,
-              firstName,
-              lastName,
-              otherNames,
-              email,
-              phone,
-              photo,
-              rating,
-            } = lawyer;
+              first_name: firstName,
+              last_name: lastName,
+              other_names: otherNames,
+              phone_number: phone,
+              image_url: photo,
+            } = lawyer.profile;
 
             return (
               <VerifiedLawyer
@@ -91,7 +81,7 @@ const VerifiedLawyers = () => {
                 email={email}
                 phone={phone}
                 rating={rating}
-                photo={photo === "" ? defaultPhoto : photo}
+                photo={photo === null ? defaultPhoto : photo}
                 handleViewProfile={() => handleViewProfile(id)}
                 handleRateLawyer={() => handleVerifyLawyer(id)}
               />
