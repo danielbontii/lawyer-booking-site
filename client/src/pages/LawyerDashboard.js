@@ -7,6 +7,7 @@ import ClientCard from "../components/ClientCard";
 import CaseFile from "../components/CaseFile";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { API_BASE } from "../apibase";
 
 const LawyerDashboard = () => {
   const [cases, setCases] = useState([]);
@@ -17,7 +18,9 @@ const LawyerDashboard = () => {
     const getCases = async () => {
       try {
         const lawyerId = localStorage.getItem("lawyerId");
-        const response = await axios.get("lba/api/v1/bookings/" + lawyerId);
+        const response = await axios.get(
+          `${API_BASE}/lba/api/v1/bookings/` + lawyerId
+        );
 
         if (response) {
           setCases(response.data);

@@ -7,6 +7,7 @@ import ProfileCard from "../components/ProfileCard";
 import { motion } from "framer-motion";
 import "animate.css";
 import defaultPhoto from "../images/defaultPhoto.png";
+import { API_BASE } from "../apibase";
 
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -63,7 +64,9 @@ const ClientDashboard = () => {
   useEffect(() => {
     const getLawyers = async () => {
       try {
-        const response = await axios.get(`lba/api/v1/profiles/lawyers`);
+        const response = await axios.get(
+          `${API_BASE}/lba/api/v1/profiles/lawyers`
+        );
 
         if (response) {
           setLawyers(response.data);

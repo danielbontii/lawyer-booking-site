@@ -10,6 +10,7 @@ import VerifiedLawyers from "../components/VerifiedLawyers";
 import UnverifiedLawyers from "../components/UnverifiedLawyers";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { API_BASE } from "../apibase";
 
 const AdminDashboard = () => {
   const [cases, setCases] = useState([]);
@@ -22,7 +23,7 @@ const AdminDashboard = () => {
   useEffect(() => {
     const getCases = async () => {
       try {
-        const response = await axios.get("lba/api/v1/bookings");
+        const response = await axios.get(`${API_BASE}/lba/api/v1/bookings`);
 
         if (response) {
           setCases(response.data);

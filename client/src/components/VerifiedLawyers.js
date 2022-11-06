@@ -7,6 +7,7 @@ import defaultPhoto from "../images/defaultPhoto.png";
 import axios from "axios";
 import { toast } from "react-toastify";
 import VerifiedLawyer from "./VerifiedLawyer";
+import { API_BASE } from "../apibase";
 
 const VerifiedLawyers = () => {
   const [lawyers, setLawyers] = useState([]);
@@ -31,7 +32,9 @@ const VerifiedLawyers = () => {
   useEffect(() => {
     const getLawyers = async () => {
       try {
-        const response = await axios.get(`lba/api/v1/profiles/lawyers`);
+        const response = await axios.get(
+          `${API_BASE}/lba/api/v1/profiles/lawyers`
+        );
 
         if (response) {
           setLawyers(response.data);
