@@ -27,7 +27,19 @@ const UnverifiedLawyers = () => {
     setShowLawyerProfile(false);
   };
 
-  const handleVerifyLawyer = (id) => {};
+  const handleVerifyLawyer = async (id) => {
+    try {
+      const response = await axios.put(
+        `${API_BASE}/lba/api/v1/register/verify-lawyer/${id}`
+      );
+
+      if (response) {
+        toast.success("Lawyer verified successfully");
+      }
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
+  };
 
   useEffect(() => {
     const getLawyers = async () => {
@@ -64,13 +76,12 @@ const UnverifiedLawyers = () => {
       <Container className="client-dashboard">
         <Row className="row-cols-lg-2 py-5 gy-4">
           {lawyers.map((lawyer, index) => {
-            const { id, rating } = lawyer;
+            const { id, email, rating } = lawyer;
 
             const {
               first_name: firstName,
               last_name: lastName,
               other_names: otherNames,
-              email,
               phone_number: phone,
               image_url: photo,
             } = lawyer.profile;
@@ -87,7 +98,7 @@ const UnverifiedLawyers = () => {
                 rating={rating}
                 photo={photo === null ? defaultPhoto : photo}
                 handleViewProfile={() => handleViewProfile(id)}
-                handleRateLawyer={() => handleVerifyLawyer(id)}
+                handleVerifyLawyer={() => handleVerifyLawyer(id)}
               />
             );
           })}

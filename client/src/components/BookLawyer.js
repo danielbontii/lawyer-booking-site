@@ -1,26 +1,24 @@
-import React from 'react'
-import {Row, Col, Container} from 'react-bootstrap'
-import {FaTimes, FaEnvelope, FaPhoneAlt} from 'react-icons/fa'
+import React from "react";
+import { Row, Col, Container } from "react-bootstrap";
+import { FaTimes, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import defaultPhoto from "../images/defaultPhoto.png";
 const BookLawyer = ({
   lawyerToBook,
   handleCloseBookLawyer,
-  handleBookThisLawyer
+  handleBookThisLawyer,
 }) => {
-  
   return (
     <div className="card-overlay animate__animated animate__fadeInDown rounded">
       {lawyerToBook.map((lawyer) => {
+        const { id, email } = lawyer;
         const {
-          id,
-          firstName,
-          lastName,
-          otherNames,
-          email,
-          photo,
-          phone,
-          rate
-        } = lawyer;
+          first_name: firstName,
+          last_name: lastName,
+          other_names: otherNames,
+          image_url: photo,
+          phone_number: phone,
+          daily_charge: rate,
+        } = lawyer.profile;
         return (
           <div>
             <Row
@@ -29,7 +27,7 @@ const BookLawyer = ({
             >
               <Col>
                 <img
-                  src={photo === "" ? defaultPhoto : photo}
+                  src={photo === null ? defaultPhoto : photo}
                   alt="Lawyer"
                   className="view-profile-photo ms-3"
                 />
@@ -56,14 +54,19 @@ const BookLawyer = ({
                 <FaPhoneAlt className="pe-2 fs-4" />
                 {phone}
               </p>
-              <p className='fs-2 my-5'>{rate}</p>
-              <button className="btn btn-primary mx-auto" onClick={handleBookThisLawyer}>BOOK</button>
+              <p className="fs-2 my-5">{rate}</p>
+              <button
+                className="btn btn-primary mx-auto"
+                onClick={handleBookThisLawyer}
+              >
+                BOOK
+              </button>
             </Container>
           </div>
         );
       })}
     </div>
-  );  
-}
+  );
+};
 
-export default BookLawyer
+export default BookLawyer;
