@@ -10,8 +10,8 @@ const CaseFile = ({caseToView, handleCloseCase}) => {
       {caseToView.map((lawCase) => {
         const {
           id,
-          caseTitle,
-          caseDescription,
+          case_title:caseTitle,
+          case_description:caseDescription,
         } = lawCase;
         return (
           <Scrollbars className="scrollbar">

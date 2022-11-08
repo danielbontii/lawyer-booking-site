@@ -3,7 +3,7 @@ const router = express.Router();
 
 const registrationController = require("../controllers/registrationController");
 
-router.route("/user-types").get(registrationController.userTypes);
+router.route("/user-types").put(registrationController.userTypes);
 
 router.route("/").post(registrationController.register);
 

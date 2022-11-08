@@ -17,7 +17,7 @@ const RateLawyer = ({
     reviewText: "",
     rating: "",
     reviewerId: "",
-    id: ""
+    id: "",
   });
 
   const { rating, reviewText } = formData;
@@ -48,7 +48,13 @@ const RateLawyer = ({
   return (
     <div className="card-overlay animate__animated animate__fadeInDown rounded">
       {lawyerToRate.map((lawyer) => {
-        const { id, firstName, lastName, otherNames, photo } = lawyer;
+        const { id } = lawyer;
+        const {
+          first_name: firstName,
+          last_name: lastName,
+          other_names: otherNames,
+          image_url: photo,
+        } = lawyer.profile;
         return (
           <div>
             <>
@@ -58,7 +64,7 @@ const RateLawyer = ({
               >
                 <Col>
                   <img
-                    src={photo === "" ? defaultPhoto : photo}
+                    src={photo === null ? defaultPhoto : photo}
                     alt="Lawyer"
                     className="view-profile-photo ms-3"
                   />

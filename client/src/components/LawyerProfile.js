@@ -58,7 +58,7 @@ const LawyerProfile = ({ handleCloseLawyerProfile, lawyerToShow }) => {
             </Container>
             <Container className="p-4">
               <div>
-                {reviews.map((review, index) => {
+                {reviews && reviews.map((review, index) => {
                   const {
                     reviewer_name: reviewerName,
                     reviewer_photo: reviewerPhoto,
