@@ -55,8 +55,38 @@ const BookLawyer = ({
                 {phone}
               </p>
               <p className="fs-2 my-5">{rate}</p>
+              <Row>
+                <Col>
+                  <p>Case begins:</p>
+                  <input
+                    type="date"
+                    name="start-date"
+                    id="start-date"
+                    className="w-100"
+                  />
+                </Col>
+                <Col>
+                  <p>Case ends:</p>
+                  <input
+                    type="date"
+                    name="end-date"
+                    id="end-date"
+                    className="w-100"
+                  />
+                </Col>
+              </Row>
+              <Row className="mt-5">
+                <p>Case Description: </p>
+                <input
+                  type="text"
+                  name="case-description"
+                  id="case-description"
+                  className="h-5"
+                />
+              </Row>
+
               <button
-                className="btn btn-primary mx-auto"
+                className="btn btn-primary mx-auto mt-5"
                 onClick={handleBookThisLawyer}
               >
                 BOOK
