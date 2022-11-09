@@ -13,7 +13,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import BookLawyer from "../components/BookLawyer";
 
-const ClientDashboard = () => {
+const ClientDashboard = ({postRoute}) => {
   const [lawyers, setLawyers] = useState([]);
   const [showLawyerProfile, setShowLawyerProfile] = useState(false);
   const [showLawyerRating, setShowLawyerRating] = useState(false);
@@ -60,6 +60,7 @@ const ClientDashboard = () => {
   const handleCloseLawyerRating = () => {
     setShowLawyerRating(false);
   };
+
 
   useEffect(() => {
     const getLawyers = async () => {

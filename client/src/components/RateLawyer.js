@@ -4,6 +4,7 @@ import { Container, Form, Col, Row } from "react-bootstrap";
 import { toast } from "react-toastify";
 import axios from "axios";
 import defaultPhoto from "../images/defaultPhoto.png";
+import { API_BASE } from "../apibase";
 
 import "animate.css";
 
@@ -14,13 +15,13 @@ const RateLawyer = ({
   lawyerToRate,
 }) => {
   const [formData, setFormData] = useState({
-    reviewText: "",
+    review: "",
     rating: "",
     reviewerId: "",
     id: "",
   });
 
-  const { rating, reviewText } = formData;
+  const { rating, review } = formData;
 
   const handleChange = (e) => {
     setFormData((prevState) => ({
@@ -29,12 +30,12 @@ const RateLawyer = ({
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e, id) => {
     e.preventDefault();
 
     const postData = async () => {
       try {
-        const response = await axios.post(``, formData);
+        const response = await axios.post(`${API_BASE}/review`, {...formData, reviewerId: localStorage.getItem("id"), lawyerId: id});
         if (response) {
         }
       } catch (error) {
@@ -103,13 +104,13 @@ const RateLawyer = ({
                   name="reviewText"
                   id="reviewText"
                   onChange={(e) => handleChange(e)}
-                  value={reviewText}
+                  value={review}
                 >
                   Enter review
                 </textarea>
                 <button
                   className="btn btn-primary"
-                  onClick={(e) => handleSubmit(e)}
+                  onClick={(e, id) => handleSubmit(e, id)}
                 >
                   SEND REVIEW
                 </button>

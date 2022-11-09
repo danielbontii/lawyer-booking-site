@@ -2,11 +2,56 @@ import React from "react";
 import { Row, Col, Container } from "react-bootstrap";
 import { FaTimes, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import defaultPhoto from "../images/defaultPhoto.png";
-const BookLawyer = ({
-  lawyerToBook,
-  handleCloseBookLawyer,
-  handleBookThisLawyer,
-}) => {
+import axios from "axios";
+import { useState } from "react";
+import { toast } from "react-toastify";
+import { API_BASE } from "../apibase";
+
+
+const BookLawyer = ({ lawyerToBook, handleCloseBookLawyer }) => {
+  const [formData, setFormData] = useState({
+    startDate: "",
+    endDate: "",
+    caseDescription: "",
+    lawyerId: "",
+    clientId: "",
+    amount: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const {startDate, endDate, caseDescription} = formData;
+
+
+  const handleBookThisLawyer = (e, id) => {
+    e.preventDefault();
+
+    const postData = async () => {
+      try {
+        const response = await axios.post(`${API_BASE}/bookings/book-lawyer`, {
+          ...formData,
+          lawyerId: id,
+          clientId: localStorage.getItem("id"),
+          amount:
+            (new Date(endDate).getTime() - new Date(startDate).getTime()) /
+            (1000 * 3600 * 24),
+        });
+        if (response) {
+          toast.success("Lawyer booked successfully");
+        }
+      } catch (error) {
+        error.response.data.map((err) => toast.error(err.message));
+      }
+    };
+
+    postData();
+  };
+
   return (
     <div className="card-overlay animate__animated animate__fadeInDown rounded">
       {lawyerToBook.map((lawyer) => {
@@ -60,18 +105,22 @@ const BookLawyer = ({
                   <p>Case begins:</p>
                   <input
                     type="date"
-                    name="start-date"
+                    name="startDate"
                     id="start-date"
                     className="w-100"
+                    onChange={(e) => handleChange(e)}
+                    value={startDate}
                   />
                 </Col>
                 <Col>
                   <p>Case ends:</p>
                   <input
                     type="date"
-                    name="end-date"
+                    name="endDate"
                     id="end-date"
                     className="w-100"
+                    onChange={(e) => handleChange(e)}
+                    value={endDate}
                   />
                 </Col>
               </Row>
@@ -79,15 +128,17 @@ const BookLawyer = ({
                 <p>Case Description: </p>
                 <input
                   type="text"
-                  name="case-description"
+                  name="caseDescription"
                   id="case-description"
                   className="h-5"
+                  onChange={(e) => handleChange(e)}
+                  value={caseDescription}
                 />
               </Row>
 
               <button
                 className="btn btn-primary mx-auto mt-5"
-                onClick={handleBookThisLawyer}
+                onClick={(id) => handleBookThisLawyer(id)}
               >
                 BOOK
               </button>
